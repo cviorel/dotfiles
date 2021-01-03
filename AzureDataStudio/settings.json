@@ -1,0 +1,57 @@
+{
+    "workbench.enablePreviewFeatures": true,
+    "workbench.colorTheme": "Solarized Dark",
+    "datasource.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "C777F06B-202E-4480-B475-FA416154D458"
+        }
+    ],
+    "datasource.connections": [
+        {
+            "options": {
+                "connectionName": "",
+                "server": "192.168.1.250,10001",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "a95d6ebf-888c-48be-92fc-2ed5ec4821c1"
+        },
+        {
+            "options": {
+                "connectionName": "",
+                "server": "192.168.1.250,10002",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "7e9b4624-fc43-4c9d-a3b9-8fdc6faeb2be"
+        }
+    ],
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "resultsGrid.fontFamily": "Fira Code",
+    "resultsGrid.fontSize": 12,
+    "terminal.integrated.fontFamily": "Fira Code",
+    "editor.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 12,
+    "editor.fontSize": 12,
+    "[sql]": {
+        "editor.defaultFormatter": "Redgate.sql-prompt"
+    },
+    "workbench.startupEditor": "welcomePage"
+}
