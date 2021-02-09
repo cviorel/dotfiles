@@ -6,7 +6,6 @@
     "editor.fontSize": 14,
     "editor.fontLigatures": true,
     "editor.renderControlCharacters": true,
-    "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.renderWhitespace": "all",
     "editor.autoIndent": "full",
@@ -43,7 +42,7 @@
     "window.zoomLevel": 0,
     "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
     // Workbench
-    "workbench.colorTheme": "1mm - OneDark Pro",
+    "workbench.colorTheme": "Atom One Dark",
     "workbench.iconTheme": "vscode-icons",
     "workbench.settings.enableNaturalLanguageSearch": false, // Don't send keystrokes to Bing
     "workbench.editor.highlightModifiedTabs": true,
@@ -75,7 +74,10 @@
         "files.trimTrailingWhitespace": true,
         "files.encoding": "utf8bom",
         "files.autoGuessEncoding": true,
-        "editor.tabCompletion": "on"
+        "editor.tabCompletion": "on",
+        // now your double clicks on a variable names include the dollar sign '$'
+        // https://twitter.com/TylerLeonhardt/status/1102749805233737729
+        "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
     },
     "[plaintext]": {
         "editor.quickSuggestions": false
@@ -97,7 +99,6 @@
     "terminal.integrated.scrollback": 500,
     "git.enableSmartCommit": true,
     // GitLens
-    "gitlens.views.lineHistory.enabled": true,
     "gitlens.currentLine.format": "${message}",
     "shellformat.effectLanguages": [
         "shellscript",
@@ -115,4 +116,8 @@
     "terminal.explorerKind": "external",
     "terminal.integrated.env.windows": {},
     "vsicons.dontShowNewVersionMessage": true,
+    "cSpell.enableFiletypes": [
+        "powershell"
+    ],
+    "todo-tree.tree.showScanModeButton": false,
 }
