@@ -1,0 +1,28 @@
+{
+    "workbench.enablePreviewFeatures": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "datasource.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "C777F06B-202E-4480-B475-FA416154D458"
+        }
+    ],
+    "datasource.connections": [],
+    "editor.fontFamily": "CaskaydiaCove Nerd Font",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.tabSize": 4,
+    "[sql]": {
+        "editor.defaultFormatter": "Microsoft.mssql"
+    },
+    "workbench.startupEditor": "welcomePage",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+    "terminal.integrated.fontSize": 14,
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "notebook.pythonPath": "C:\\Users\\Viorel\\azuredatastudio-python",
+    "notebook.useExistingPython": false,
+    "window.zoomLevel": 0
+}

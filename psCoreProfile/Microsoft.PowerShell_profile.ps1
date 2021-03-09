@@ -542,18 +542,6 @@ $browser = New-Object System.Net.WebClient
 $browser.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 #endregion Misc Settings
 
-#region credentials
-# if (Test-Path -Path "$HOME\Documents\sqlcred.xml") {
-#     # $CredentialPath = "$HOME\Documents\sqlcred.xml"
-#     # New-Item -Type File $CredentialPath
-#     # Get-Credential | Export-Clixml -Path $CredentialPath
-
-#     # Use a saved credential for all commands, add to existing PSDefaultParameterValues
-#     $sqlcredential = Import-Clixml -Path "$HOME\Documents\sqlcred.xml"
-#     $PSDefaultParameterValues.Add("*:Credential", $sqlcredential)
-# }
-#endregion credentials
-
 Import-Module posh-git
 Import-Module oh-my-posh
-Invoke-Expression (oh-my-posh --init --shell pwsh --config ~/.poshthemes/jandedobbeleer.omp.json)
+Invoke-Expression (oh-my-posh --init --shell pwsh --config ~/.poshthemes/powerlevel10k_lean.omp.json)
