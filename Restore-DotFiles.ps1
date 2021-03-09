@@ -14,20 +14,28 @@ $output = @()
 foreach ($sName in $source.GetEnumerator()) {
     $gitPath = Join-Path -Path $gitRepo -ChildPath $sName.Name
     $obj = New-Object -TypeName PSObject
-    $obj | Add-Member -MemberType NoteProperty -Name Item -Value $sName.Name
+    $obj | Add-Member -MemberType NoteProperty -Name Application -Value $sName.Name
     $obj | Add-Member -MemberType NoteProperty -Name Source -Value $sName.Value
     $obj | Add-Member -MemberType NoteProperty -Name Destination -Value $gitPath
     $output += $obj
 }
 
 foreach ($item in $output) {
-    $item
-
-    if ($item -match 'psCoreProfile|psProfile') {
-        if (!(Test-Path -Path $item.Destination)) {
-            New-Item -Path $item.Destination -ItemType File -Force
+    if ($item.Application -match 'psCoreProfile|psProfile') {
+        if (!(Test-Path -Path $item.Source)) {
+            New-Item -Path $item.Source -ItemType File -Force
         }
     }
 
-    Copy-Item -Path "$($item.Destination)\*" -Destination $($item.Source)
+    if (Test-Path -Path $item.Source) {
+        $fileName = Resolve-Path -Path $item.Source | Split-Path -Leaf
+        Copy-Item -Path "$gitRepo\$($item.Application)\$fileName" -Destination "$($item.Source)" -Force
+    }
+
+    if ($item.Application -match 'VSCode') {
+        if (Test-Path -Path "$gitRepo\$($item.Application)\extensions.txt") {
+            $extensions = Get-Content -Path "$gitRepo\$($item.Application)\extensions.txt"
+            $extensions | ForEach-Object { code --install-extension $_ }
+        }
+    }
 }
