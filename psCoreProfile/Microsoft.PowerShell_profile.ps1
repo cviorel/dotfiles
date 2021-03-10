@@ -544,4 +544,4 @@ $browser.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredent
 
 Import-Module posh-git
 Import-Module oh-my-posh
-Invoke-Expression (oh-my-posh --init --shell pwsh --config ~/.poshthemes/powerlevel10k_lean.omp.json)
+Set-PoshPrompt -Theme powerlevel10k_lean
