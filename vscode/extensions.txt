@@ -1,5 +1,6 @@
 adpyke.codesnap
 akamud.vscode-theme-onedark
+akamud.vscode-theme-onelight
 bierner.github-markdown-preview
 bierner.markdown-checkbox
 bierner.markdown-emoji
