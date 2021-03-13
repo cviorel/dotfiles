@@ -16,7 +16,7 @@ if ($IsLinux -or $IsMacOS) {
 }
 #endregion Set Editor
 
-fregion useful functions
+#region useful functions
 function Clear-History {
     $histFile = (Get-PSReadLineOption).HistorySavePath
     if (Test-Path -Path $histFile) {
@@ -25,7 +25,7 @@ function Clear-History {
     Write-Output "History file was deleted!"
 }
 
-function Get-CustomDirectory {
+Function Get-CustomDirectory {
     [CmdletBinding()]
     [OutputType([String])]
     Param (
@@ -64,7 +64,7 @@ function Get-CustomDirectory {
     }
 }
 
-function Get-DNS {
+Function Get-DNS {
     <#
     .SYNOPSIS
     Gets DNS controllers
@@ -120,8 +120,7 @@ function ConvertTo-Base64String {
         return [convert]::ToBase64String($userEncoding.GetBytes($InputObject))
     }
 }
-
-function Get-Tail {
+Function Get-Tail {
     <#
     .SYNOPSIS
     Equivalent of NIX tail -f
@@ -143,7 +142,6 @@ function Get-Tail {
         'You did not select a file.'
     }
 }
-
 function Generate-Password {
     <#
     .SYNOPSIS
@@ -214,7 +212,6 @@ function Generate-Password {
         $output
     }
 }
-
 function Get-PrimaryMonitorSize {
     [void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     $res = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize | Select-Object Width, Height
@@ -274,25 +271,21 @@ function Start-RDP {
     catch {
     }
 }
-
 function Get-EnvironmentVariable {
     Get-Item -Path Env:\
 }
-
 function Get-ExportedFunctions {
     try {
-        fhelper_functions = (Get-Module $PROFILE -ListAvailable | Select-Object -ExpandProperty ExportedCommands).Values.Name -join ', '
-        frite-Host 'Profile helper functions: ' -NoNewline; Write-Host $helper_functions -ForegroundColor Green
+        $helper_functions = (Get-Module $PROFILE -ListAvailable | Select-Object -ExpandProperty ExportedCommands).Values.Name -join ', '
+        Write-Host 'Profile helper functions: ' -NoNewline; Write-Host $helper_functions -ForegroundColor Green
     }
     catch {
-        frite-Error "Error obtaining helper function list: $_"
+        Write-Error "Error obtaining helper function list: $_"
     }
 }
-
 function Open-HistoryFile {
     & $editor (Get-PSReadLineOption | Select-Object -ExpandProperty HistorySavePath)
 }
-
 function Invoke-StayAlive {
     [CmdletBinding()]
     param (
@@ -379,7 +372,6 @@ function Remove-CommitHistory {
 
     }
 }
-
 function Get-CommitMessage {
     [CmdletBinding()]
     param (
@@ -408,7 +400,8 @@ function Push-MyStuff {
     $message = Get-CommitMessage
     git add -A && git commit -a -m $message && git push
 }
-fendregion useful functions
+
+#endregion useful functions
 
 #region Prompt
 function Prompt_DBATools {
@@ -432,7 +425,7 @@ function Prompt_DBATools {
     "> "
 }
 
-function Prompt {
+Function Prompt {
     Write-Host "I " -NoNewline; Write-Host "$([char]9829) " -ForegroundColor Red -NoNewline; Write-Host "PS " -NoNewline
     Write-Host $(Get-CustomDirectory) -ForegroundColor Green  -NoNewline
     Write-Host " >_" -NoNewline -ForegroundColor Yellow
@@ -456,11 +449,11 @@ $PSReadLineOptions = @{
 }
 Set-PSReadLineOption @PSReadLineOptions
 
-fet-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-fet-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-fet-PSReadLineKeyHandler -Chord Ctrl+w -Function BackwardKillWord
-fet-PSReadLineKeyHandler -Chord Alt+d -Function KillWord
-fet-PSReadLineKeyHandler -Chord Ctrl+k -Function CaptureScreen
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Chord Ctrl+w -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Chord Alt+d -Function KillWord
+Set-PSReadLineKeyHandler -Chord Ctrl+k -Function CaptureScreen
 
 # Don't save sensitive data
 Set-PSReadLineOption -AddToHistoryHandler {
