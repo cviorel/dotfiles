@@ -1,13 +1,14 @@
-﻿
+﻿$documentsLocation = [Environment]::GetFolderPath("MyDocuments")
+
 $source = @{
-    psCoreProfile = "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-    psProfile     = "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+    psCoreProfile = "$documentsLocation\PowerShell\Microsoft.PowerShell_profile.ps1"
+    psProfile     = "$documentsLocation\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
     VSCode        = "$env:APPDATA\Code\User\settings.json"
     azDataStudio  = "$env:APPDATA\azuredatastudio\User\settings.json"
     WTerminal     = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 }
 
-$gitRepo = "$env:USERPROFILE\Documents\GitHub\dotfiles"
+$gitRepo = "D:\GitHub\dotfiles"
 
 $output = @()
 
