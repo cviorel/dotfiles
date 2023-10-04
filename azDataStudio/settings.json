@@ -1,0 +1,42 @@
+{
+    "workbench.enablePreviewFeatures": true,
+    "workbench.colorTheme": "1mm - OneDark Pro",
+    "workbench.startupEditor": "welcomePage",
+    "editor.fontFamily": "'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.tabSize": 4,
+    "[sql]": {
+        "editor.defaultFormatter": "Microsoft.mssql"
+    },
+    "terminal.integrated.fontFamily": "'AurulentSansM Nerd Font Mono', Consolas, monospace",
+    "terminal.integrated.fontSize": 14,
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        }
+    },
+    "terminal.explorerKind": "external",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.cursorStyle": "block",
+    "telemetry.telemetryLevel": "off",
+    "notebook.pythonPath": "C:\\Users\\Viorel\\azuredatastudio-python",
+    "notebook.useExistingPython": false,
+    "window.zoomLevel": 0,
+    "workbench.editorAssociations": {
+        "*.{sqlplan}": "workbench.editor.executionplan"
+    }
+}
