@@ -33,6 +33,14 @@ foreach ($item in $output) {
 
     $fileName = Resolve-Path -Path $item.Source | Split-Path -Leaf
 
+    if (-Not (Test-Path $fileName)) {
+        New-Item -Path $fileName -ItemType File -Force
+    }
+    else {
+        Write-Output "File '$fileName' already exists."
+    }
+
+
     if (Test-Path -Path $item.Source) {
         Write-Output ":: Copying $gitRepo\$($item.Application)\$fileName -> $($item.Source)"
         Copy-Item -Path "$gitRepo\$($item.Application)\$fileName" -Destination "$($item.Source)" -Force
@@ -50,10 +58,17 @@ foreach ($item in $output) {
         # Install extensions
         if (Test-Path -Path "$gitRepo\$($item.Application)\extensions.txt") {
             Write-Output ":: Installing VSCode extensions"
-            $extensions = Get-Content -Path "$gitRepo\$($item.Application)\extensions.txt"
-            $extensions | ForEach-Object {
-                Write-Output ":: Installing extension: $_"
-                code --install-extension $_ --force
+            $extensionsToInstall = Get-Content -Path "$gitRepo\$($item.Application)\extensions.txt"
+            $installedExtensions = code --list-extensions
+
+            foreach ($extension in $extensionsToInstall) {
+                if ($installedExtensions -notcontains $extension) {
+                    Write-Output ":: Installing extension: $extension"
+                    code --install-extension $extension --force
+                }
+                else {
+                    Write-Output ":: Extension $extension is already installed."
+                }
             }
         }
     }
