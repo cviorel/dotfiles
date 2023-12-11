@@ -24,7 +24,7 @@ foreach ($sName in $source.GetEnumerator()) {
 }
 
 foreach ($item in $output) {
-    if ($item.Application -match 'psCoreProfile|psProfile|VSCode') {
+    if ($item.Application -match 'psCoreProfile|psProfile|VSCode|azDataStudio') {
         if (!(Test-Path -Path $item.Source)) {
             Write-Output ":: Creating profile for $($item.Application) -> $($item.Source)"
             New-Item -Path $item.Source -ItemType File -Force
@@ -32,14 +32,6 @@ foreach ($item in $output) {
     }
 
     $fileName = Resolve-Path -Path $item.Source | Split-Path -Leaf
-
-    if (-Not (Test-Path $fileName)) {
-        New-Item -Path $fileName -ItemType File -Force
-    }
-    else {
-        Write-Output "File '$fileName' already exists."
-    }
-
 
     if (Test-Path -Path $item.Source) {
         Write-Output ":: Copying $gitRepo\$($item.Application)\$fileName -> $($item.Source)"
