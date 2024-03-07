@@ -297,5 +297,54 @@
             "Send-MailMessage @Params"
         ],
         "description": "Send a mail message"
-    }
+    },
+    "Stream-Writer": {
+        "prefix": "Stream Writer",
+        "body": [
+            "## Create a file and write to it",
+            "$$file = 'c:\\temp\\file.txt'",
+            "$$sw = New-Object System.IO.StreamWriter($$file)",
+            "$$sw.WriteLine('Hello World')",
+            "$$sw.Close()"
+        ],
+        "description": "Create a file and write to it"
+    },
+    "StreamReader1": {
+        "prefix": "Stream Reader v1",
+        "body": [
+            "## Read a file",
+            "$$file = 'c:\\temp\\file.txt'",
+            "$$sr = New-Object System.IO.StreamReader($$file)",
+            "while ($$sr.Peek() -ge 0) {",
+            "    $$line = $$sr.ReadLine()",
+            "    Write-Host $$line",
+            "}",
+            "$$sr.Close()"
+        ],
+        "description": "Read a file"
+    },
+    "StreamReader2": {
+        "prefix": "Stream Reader v2",
+        "body": [
+            "$$file = ${1:'c:\\temp\\file.txt'}",
+            "$$results = @{}",
+            "\r# Setup a streamreader to process the file ",
+            "$$sr = New-Object System.IO.StreamReader -ArgumentList $$file",
+            "\rwhile ($$true ) {",
+            "\t# Read this line ",
+            "\t$$line = $$sr.ReadLine() ",
+            "\tif ($$line -eq $$null) {",
+            "\t\t# If the line was $$null, we're at the end of the file, let's break",
+            "\t\t$$sr.close() ",
+            "\t\tbreak",
+            "\t}",
+            "\r\t# Do something with the line here",
+            "\tif ($$line.StartsWith('\\[Re')) {",
+            "\t\t$$results[$$line] += 1",
+            "\t}",
+            "}",
+            "\rreturn $$results",
+        ],
+        "description": "Use this to quickly have a working StreamReader"
+    },
 }

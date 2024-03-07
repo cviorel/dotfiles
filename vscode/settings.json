@@ -45,9 +45,6 @@
     "files.autoGuessEncoding": true,
     "files.trimTrailingWhitespace": true,
     "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-    // Workbench
-    "workbench.colorTheme": "1mm - OneDark Pro",
-    "workbench.iconTheme": "vscode-icons",
     "workbench.settings.enableNaturalLanguageSearch": false, // Don't send keystrokes to Bing
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "none",
@@ -70,6 +67,7 @@
         "files.encoding": "utf8bom",
         "files.autoGuessEncoding": true,
         "editor.tabCompletion": "on",
+        "editor.defaultFormatter": "ms-vscode.powershell",
         // now your double clicks on a variable names include the dollar sign '$'
         // https://twitter.com/TylerLeonhardt/status/1102749805233737729
         "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
@@ -94,14 +92,14 @@
         "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
-            "source.formatAll.terraform": true
+            "source.formatAll.terraform": "explicit"
         },
     },
     "[terraform-vars]": {
         "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
-            "source.formatAll.terraform": true
+            "source.formatAll.terraform": "explicit"
         },
     },
     "[yaml]": {
@@ -139,7 +137,6 @@
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.cursorStyle": "block",
-    "terminal.integrated.enableBell": true,
     "terminal.integrated.fontFamily": "'AurulentSansM Nerd Font Mono', Consolas, monospace",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.scrollback": 500,
@@ -173,7 +170,7 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-    "python.defaultInterpreterPath": "C:\\Users\\Viorel\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python.defaultInterpreterPath": "C:\\Users\\Viorel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
@@ -203,5 +200,19 @@
     "git.autofetch": true,
     "yaml.schemas": {
         "file:///c%3A/Users/Viorel/.vscode/extensions/docsmsft.docs-yaml-0.2.9/out/yaml-support/toc.schema.json": "/toc\\.yml/i"
-    }
+    },
+    "[terraform][terraform-vars]": {
+        "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": "explicit"
+        }
+    },
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true,
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "workbench.colorTheme": "1mm - OneDark Pro",
+    "workbench.iconTheme": "vscode-icons"
 }

@@ -420,7 +420,7 @@ function Install-Updates {
     param (
     )
     if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-output ":: This needs to be run as Admin!"
+        Write-Output ":: This needs to be run as Admin!"
         break
     }
 
@@ -449,6 +449,58 @@ function Install-Updates {
     Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | Out-File "${logFolder}\$(Get-Date -f yyyy-MM-dd)-WindowsUpdate.log"
 }
 #endregion useful functions
+
+#region Docker Functions
+function DockerCommand {
+    docker $args
+}
+
+function ListContainers {
+    docker ps -a
+}
+
+function ListImages {
+    docker images
+}
+
+function RemoveDanglingImages {
+    $(docker images -f "dangling=true" -q) | ForEach-Object {
+        docker rmi $_
+    }
+}
+
+function CleanDocker {
+    CleanStoppedContainers || $true
+    CleanUntaggedImages
+}
+
+function CleanStoppedContainers {
+    Write-Output "`n>>> Deleting stopped containers`n`n"
+    $(docker ps -a --filter "status=exited" -q) | ForEach-Object {
+        docker rm $_
+    }
+}
+
+function CleanUntaggedImages {
+    Write-Output "`n>>> Deleting untagged images`n`n"
+    $(docker images -q -f dangling=true) | ForEach-Object {
+        docker rmi $_
+    }
+}
+
+function KillAllContainers {
+    Write-Output "`n>>> Kill all containers`n`n"
+    docker kill $(docker ps -q)
+}
+
+function RemoveAllContainers {
+    docker rm $(docker ps -a -q)
+}
+
+function StopAllContainers {
+    docker stop $(docker ps -a -q)
+}
+#endregion Docker Functions
 
 #region Prompt
 function Prompt_DBATools {

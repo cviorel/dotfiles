@@ -2,7 +2,7 @@
     "workbench.enablePreviewFeatures": true,
     "workbench.colorTheme": "1mm - OneDark Pro",
     "workbench.startupEditor": "welcomePage",
-    "editor.fontFamily": "'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'AurulentSansM Nerd Font Mono', Consolas, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.fontLigatures": true,
     "editor.tabSize": 4,
@@ -38,5 +38,74 @@
     "window.zoomLevel": 0,
     "workbench.editorAssociations": {
         "*.{sqlplan}": "workbench.editor.executionplan"
-    }
+    },
+    "datasource.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "C777F06B-202E-4480-B475-FA416154D458"
+        }
+    ],
+    "datasource.connections": [
+        {
+            "options": {
+                "connectionName": "sql2017",
+                "server": "localhost,2017",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "encrypt": "true",
+                "trustServerCertificate": true,
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "6c29e15d-3026-41ca-aca0-17093f1112d3"
+        },
+        {
+            "options": {
+                "connectionName": "sql2019",
+                "server": "localhost,2019",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "connectTimeout": 30,
+                "commandTimeout": 30,
+                "encrypt": "false",
+                "trustServerCertificate": "false",
+                "connectRetryCount": 1,
+                "connectRetryInterval": 10,
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "f18c4700-26dd-4d9a-84c3-7b1fc903ca8a"
+        },
+        {
+            "options": {
+                "connectionName": "sql2022",
+                "server": "localhost,2022",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "encrypt": "true",
+                "trustServerCertificate": true,
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "6c39e50e-d156-4360-b456-f832565a5987"
+        }
+    ]
 }
