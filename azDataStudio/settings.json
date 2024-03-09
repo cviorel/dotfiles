@@ -56,14 +56,14 @@
                 "password": "",
                 "applicationName": "azdata",
                 "encrypt": "true",
-                "trustServerCertificate": true,
+                "trustServerCertificate": "true",
                 "groupId": "C777F06B-202E-4480-B475-FA416154D458",
                 "databaseDisplayName": ""
             },
             "groupId": "C777F06B-202E-4480-B475-FA416154D458",
             "providerName": "MSSQL",
             "savePassword": true,
-            "id": "6c29e15d-3026-41ca-aca0-17093f1112d3"
+            "id": "9206f279-81d8-4e8a-8966-2f05ced62294"
         },
         {
             "options": {
