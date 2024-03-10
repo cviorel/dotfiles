@@ -756,5 +756,3 @@ $browser.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredent
 #endregion Misc Settings
 
 oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json" | Invoke-Expression
-
-Import-Module PSKubectlCompletion
