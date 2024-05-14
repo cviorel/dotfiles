@@ -739,6 +739,18 @@ if ($psDrives.Name -notcontains "Presentations") {
 }
 #endregion PS Drives
 
+#region Argument Completers
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+    param($wordToComplete, $commandAst, $cursorPosition)
+    [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+    $Local:word = $wordToComplete.Replace('"', '""')
+    $Local:ast = $commandAst.ToString().Replace('"', '""')
+    winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
+}
+#endregion Argument Completers
+
 #region Aliases
 Set-Alias -Name ll -Value Get-ChildItem
 #endregion Aliases
@@ -754,5 +766,7 @@ Set-Alias -Name ll -Value Get-ChildItem
 $browser = New-Object System.Net.WebClient
 $browser.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 #endregion Misc Settings
+
+Import-Module posh-git
 
 oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json" | Invoke-Expression
