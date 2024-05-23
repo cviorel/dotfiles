@@ -23,7 +23,6 @@ docsmsft.docs-preview
 docsmsft.docs-scaffolding
 docsmsft.docs-yaml
 dotjoshjohnson.xml
-eamodio.gitlens
 eliostruyf.vscode-extension-panel
 eliostruyf.vscode-microsoft-writingstyleguide
 esbenp.prettier-vscode
@@ -35,6 +34,7 @@ hashicorp.terraform
 joytrekker.1mm-themes
 learningengineeringoperations.learn-training-ai-assistant
 mikestead.dotenv
+ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-azureterraform
 ms-azuretools.vscode-docker
 ms-mssql.data-workspace-vscode
@@ -58,7 +58,6 @@ ms-vscode.azure-account
 ms-vscode.powershell
 ms-vscode.remote-explorer
 oderwat.indent-rainbow
-pflannery.vscode-versionlens
 redhat.vscode-commons
 redhat.vscode-yaml
 sdras.night-owl
