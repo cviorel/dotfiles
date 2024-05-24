@@ -767,6 +767,20 @@ $browser = New-Object System.Net.WebClient
 $browser.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
 #endregion Misc Settings
 
-Import-Module posh-git
+#region Modules
+#region posh-git
+if (Get-Module -Name posh-git -ListAvailable) {
+    Import-Module posh-git
+}
+#endregion posh-git
+
+#region Docker completion
+if (Get-Command docker) {
+    if (Get-Module DockerCompletion -ListAvailable) {
+        Import-Module DockerCompletion
+    }
+}
+#endregion Docker completion
+#endregion Modules
 
 oh-my-posh init pwsh --config "$env:LOCALAPPDATA\Programs\oh-my-posh\themes\powerlevel10k_lean.omp.json" | Invoke-Expression
