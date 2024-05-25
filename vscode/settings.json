@@ -212,5 +212,6 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "workbench.colorTheme": "1mm - OneDark Pro",
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "github.copilot.editor.enableAutoCompletions": true
 }

@@ -775,7 +775,7 @@ if (Get-Module -Name posh-git -ListAvailable) {
 #endregion posh-git
 
 #region Docker completion
-if (Get-Command docker) {
+if (Get-Command docker -ErrorAction SilentlyContinue) {
     if (Get-Module DockerCompletion -ListAvailable) {
         Import-Module DockerCompletion
     }
