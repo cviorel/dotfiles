@@ -33,7 +33,7 @@
         115
     ],
     // Explorer
-    "explorer.openEditors.visible": 0,
+    "explorer.openEditors.visible": 1,
     "explorer.sortOrder": "type",
     // Files
     "files.autoSave": "afterDelay",
