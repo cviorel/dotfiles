@@ -729,7 +729,6 @@ foreach ($drive in $drivePaths.GetEnumerator()) {
         if (Test-Path -Path $drive.Value) {
             try {
                 $null = New-PSDrive -Name $drive.Key -PSProvider FileSystem -Scope Global -Root $drive.Value -ErrorAction Stop
-                Write-Output "Drive $($drive.Key) created at $($drive.Value)"
             }
             catch {
                 Write-Output "Error creating drive $($drive.Key): $_"
