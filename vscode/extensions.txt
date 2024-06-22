@@ -57,7 +57,6 @@ ms-vscode-remote.remote-wsl
 ms-vscode.azure-account
 ms-vscode.powershell
 ms-vscode.remote-explorer
-oderwat.indent-rainbow
 redhat.vscode-commons
 redhat.vscode-yaml
 sdras.night-owl
