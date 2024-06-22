@@ -673,7 +673,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+k -Function CaptureScreen
 Set-PSReadLineOption -AddToHistoryHandler {
     param([string]$line)
     $sensitive = "password|asplaintext|token|key|secret"
-    return ($line -notmatch $sensitive)
+    return ($line -notmatch $sensitive) -and ($line -notmatch "^\s*$") -and ($line -notmatch "^\s*#")
 }
 
 # Resolve full path
@@ -717,24 +717,24 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+x,Ctrl+p' -ScriptBlock {
 $psDrives = Get-PSDrive
 
 # Create drives
-if ($psDrives.Name -notcontains "Documents") {
-    if (Test-Path -Path "$env:USERPROFILE\Documents") {
-        $null = New-PSDrive -Name Documents -PSProvider FileSystem -Scope Global -Root "$env:USERPROFILE\Documents"
-    }
+$drivePaths = @{
+    Documents     = "$env:USERPROFILE\Documents"
+    Downloads     = "$env:USERPROFILE\Downloads"
+    OneDrive      = "$env:USERPROFILE\OneDrive"
+    Presentations = "$env:USERPROFILE\OneDrive\Presentations"
 }
-if ($psDrives.Name -notcontains "Downloads") {
-    if (Test-Path -Path "$env:USERPROFILE\Downloads") {
-        $null = New-PSDrive -Name Downloads -PSProvider FileSystem -Scope Global -Root "$env:USERPROFILE\Downloads"
-    }
-}
-if ($psDrives.Name -notcontains "OneDrive") {
-    if (Test-Path -Path "$env:USERPROFILE\OneDrive") {
-        $null = New-PSDrive -Name OneDrive -PSProvider FileSystem -Scope Global -Root "$env:USERPROFILE\OneDrive"
-    }
-}
-if ($psDrives.Name -notcontains "Presentations") {
-    if (Test-Path -Path "$env:USERPROFILE\OneDrive\Presentations") {
-        $null = New-PSDrive -Name Presentations -PSProvider FileSystem -Scope Global -Root "$env:USERPROFILE\OneDrive\Presentations"
+
+foreach ($drive in $drivePaths.GetEnumerator()) {
+    if ($psDrives.Name -notcontains $drive.Key) {
+        if (Test-Path -Path $drive.Value) {
+            try {
+                $null = New-PSDrive -Name $drive.Key -PSProvider FileSystem -Scope Global -Root $drive.Value -ErrorAction Stop
+                Write-Output "Drive $($drive.Key) created at $($drive.Value)"
+            }
+            catch {
+                Write-Output "Error creating drive $($drive.Key): $_"
+            }
+        }
     }
 }
 #endregion PS Drives

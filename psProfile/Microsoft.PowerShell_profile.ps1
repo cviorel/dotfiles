@@ -417,7 +417,7 @@ function Install-Updates {
     param (
     )
     if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        Write-output ":: This needs to be run as Admin!"
+        Write-Output ":: This needs to be run as Admin!"
         break
     }
 
@@ -485,20 +485,22 @@ $PSReadLineOptions = @{
     HistoryNoDuplicates           = $true
     HistorySearchCursorMovesToEnd = $true
     BellStyle                     = "None"
+    PredictionSource              = "History"
+    PredictionViewStyle           = "InlineView" # ListView
 }
 Set-PSReadLineOption @PSReadLineOptions
 
-Set-PSReadLineKeyHandler -Key UpArrow -function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -function HistorySearchForward
-Set-PSReadLineKeyHandler -Chord Ctrl+w -function BackwardKillWord
-Set-PSReadLineKeyHandler -Chord Alt+d -function KillWord
-Set-PSReadLineKeyHandler -Chord Ctrl+k -function CaptureScreen
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Chord Ctrl+w -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Chord Alt+d -Function KillWord
+Set-PSReadLineKeyHandler -Chord Ctrl+k -Function CaptureScreen
 
 # Don't save sensitive data
 Set-PSReadLineOption -AddToHistoryHandler {
     param([string]$line)
     $sensitive = "password|asplaintext|token|key|secret"
-    return ($line -notmatch $sensitive)
+    return ($line -notmatch $sensitive) -and ($line -notmatch "^\s*$") -and ($line -notmatch "^\s*#")
 }
 
 # Resolve full path
@@ -536,7 +538,6 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+x,Ctrl+p' -ScriptBlock {
         }
     }
 }
-
 #endregion PSReadLine
 
 #region PS Drives
