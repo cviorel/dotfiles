@@ -225,5 +225,6 @@
     },
     "workbench.colorTheme": "1mm - OneDark Pro",
     "workbench.iconTheme": "vscode-icons",
-    "github.copilot.editor.enableAutoCompletions": true
+    "github.copilot.editor.enableAutoCompletions": true,
+    "mssql.enableRichExperiences": true
 }
