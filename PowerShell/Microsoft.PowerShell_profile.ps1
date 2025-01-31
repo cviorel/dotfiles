@@ -2,35 +2,41 @@
 
 #region useful functions
 function Set-Editor {
+    # Detect the operating system
+    $os = [System.Environment]::OSVersion.Platform
+
     # Check if VS Code is installed by looking for the 'code' command
     if (Get-Command code -ErrorAction SilentlyContinue) {
         $editor = "code"
     }
-    elseif ($IsWindows) {
+    elseif ($os -eq "Win32NT") {
         $editor = "notepad"
     }
-    elseif ($IsMacOS) {
-        $editor = "open -a TextEdit"  # Use TextEdit on macOS
-    }
-    elseif ($IsLinux) {
-        # Prefer vim over nano if both are available
-        if (Get-Command vim -ErrorAction SilentlyContinue) {
-            $editor = "vim"
-        }
-        elseif (Get-Command nano -ErrorAction SilentlyContinue) {
-            $editor = "nano"
+    elseif ($os -eq "Unix") {
+        if ($IsMacOS -or (uname) -match "Darwin") {
+            $editor = "open -a TextEdit"  # Use TextEdit on macOS
         }
         else {
-            $editor = "vi"  # Default to vi if neither vim nor nano is found
+            # Prefer vim over nano if both are available
+            if (Get-Command vim -ErrorAction SilentlyContinue) {
+                $editor = "vim"
+            }
+            elseif (Get-Command nano -ErrorAction SilentlyContinue) {
+                $editor = "nano"
+            }
+            else {
+                $editor = "vi"  # Default to vi if neither vim nor nano is found
+            }
         }
     }
     else {
         Write-Error "Operating system not supported."
+        return $null
     }
 
-    # Output the chosen editor (you could assign it globally or return it)
     return $editor
 }
+
 $editor = Set-Editor
 
 function Clear-History {
@@ -287,7 +293,6 @@ function Open-HistoryFile {
         Write-Error "Failed to open history file using editor: $editor. Error: $_"
     }
 }
-
 
 function Invoke-StayAlive {
     [CmdletBinding()]
