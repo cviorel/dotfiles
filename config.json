@@ -15,11 +15,6 @@
             "destination": "VSCode\\settings.json",
             "binaryName": "code.cmd"
         },
-        "AzureDataStudio": {
-            "source": "%APPDATA%\\azuredatastudio\\User\\settings.json",
-            "destination": "AzureDataStudio\\settings.json",
-            "binaryName": "azuredatastudio.cmd"
-        },
         "WindowsTerminal": {
             "source": "%LOCALAPPDATA%\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json",
             "destination": "WindowsTerminal\\settings.json",
