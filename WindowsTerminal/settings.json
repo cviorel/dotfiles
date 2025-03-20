@@ -9,17 +9,7 @@
                 "action": "splitPane",
                 "split": "right"
             },
-            "id": "User.splitPane.864CD510",
-            "keys": "ctrl+shift+e"
-        },
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+shift+c"
+            "id": "User.splitPane.864CD510"
         },
         {
             "command": 
@@ -27,13 +17,15 @@
                 "action": "splitPane",
                 "split": "down"
             },
-            "id": "User.splitPane.D5151347",
-            "keys": "ctrl+shift+o"
+            "id": "User.splitPane.D5151347"
         },
         {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
         },
         {
             "command": 
@@ -42,13 +34,15 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         },
         {
             "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+shift+v"
+            "id": "User.paste"
         }
     ],
     "copyFormatting": "none",
@@ -56,6 +50,33 @@
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "initialCols": 150,
     "initialRows": 50,
+    "keybindings": 
+    [
+        {
+            "id": "User.splitPane.864CD510",
+            "keys": "ctrl+shift+e"
+        },
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+shift+c"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "id": "User.splitPane.D5151347",
+            "keys": "ctrl+shift+o"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        }
+    ],
     "multiLinePasteWarning": false,
     "newTabMenu": 
     [

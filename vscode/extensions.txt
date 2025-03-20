@@ -48,9 +48,11 @@ ms-vscode.remote-explorer
 ms-vscode.remote-server
 redhat.vscode-commons
 redhat.vscode-yaml
+saoudrizwan.claude-dev
 sdras.night-owl
 teabyii.ayu
 telesoho.vscode-markdown-paste-image
+tylerleonhardt.vscode-inline-values-powershell
 tyriar.sort-lines
 vscode-icons-team.vscode-icons
 wayou.vscode-todo-highlight
