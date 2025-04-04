@@ -12,7 +12,6 @@ blackmist.linkcheckmd
 chrmarti.regex
 dbatools.search
 dotjoshjohnson.xml
-eliostruyf.vscode-extension-panel
 esbenp.prettier-vscode
 foxundermoon.shell-format
 github.copilot

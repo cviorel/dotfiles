@@ -226,5 +226,13 @@
     "workbench.colorTheme": "1mm - OneDark Pro",
     "workbench.iconTheme": "vscode-icons",
     "github.copilot.editor.enableAutoCompletions": true,
-    "debug.inlineValues": "on"
+    "debug.inlineValues": "on",
+    "mssql.enableRichExperiences": true,
+    "mssql.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "170E6A03-C27B-4C4E-98F1-1C6827AA982F"
+        }
+    ],
+    "mssql.connections": []
 }
