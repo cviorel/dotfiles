@@ -273,7 +273,7 @@ function Get-ExportedFunctions {
 }
 
 function Open-HistoryFile {
-    $editor = if ($null -eq $editor) { 'notepad' } else { $editor }
+    $editor = if ($null -eq $editor -or [string]::IsNullOrWhiteSpace($editor)) { 'notepad' } else { $editor }
     $historyPath = (Get-PSReadLineOption).HistorySavePath
 
     if (-not $historyPath) {
