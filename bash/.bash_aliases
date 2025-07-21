@@ -21,13 +21,13 @@ alias dclist='docker ps -a'
 alias dilist='docker images'
 
 # Kill all running containers.
-alias dockerkillall='docker kill $(docker ps -q)'
+alias dockerkillall='docker ps -q | xargs -r docker kill'
 
 # Delete all stopped containers
-alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias dockercleanc='echo -e "\n[INFO] Deleting stopped containers\n" && docker ps -f status=exited -q | xargs -r docker rm'
 
 # Delete all untagged images
-alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+alias dockercleani='printf "\n[INFO] Deleting untagged images\n" && docker images -q -f dangling=true | xargs -r docker rmi'
 
 # Delete all stopped containers and untagged images
 alias dockerclean='dockercleanc || true && dockercleani'
