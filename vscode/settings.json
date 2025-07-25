@@ -82,6 +82,7 @@
     "powershell.codeFormatting.preset": "OTBS",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
     "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.useConstantStrings": true,
     "powershell.codeFormatting.whitespaceAfterSeparator": true,
     "powershell.codeFormatting.whitespaceAroundOperator": true,
     "powershell.codeFormatting.alignPropertyValuePairs": true,
