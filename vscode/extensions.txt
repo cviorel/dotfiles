@@ -21,6 +21,7 @@ gruntfuggly.todo-tree
 hashicorp.hcl
 hashicorp.terraform
 joytrekker.1mm-themes
+mechatroner.rainbow-csv
 mikestead.dotenv
 ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-containers
