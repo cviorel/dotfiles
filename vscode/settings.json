@@ -72,8 +72,19 @@
     // Extensions
     "extensions.ignoreRecommendations": true,
     // Powershell
-    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
     "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.ignoreOneLineBlock": false,
+    "powershell.codeFormatting.newLineAfterCloseBrace": true,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": true,
     "powershell.integratedConsole.focusConsoleOnExecute": false,
     "powershell.integratedConsole.showOnStartup": false,
     "powershell.integratedConsole.suppressStartupBanner": false,
@@ -235,6 +246,7 @@
         "editor.defaultFormatter": "docker.docker"
     },
     "debug.inlineValues": "on",
+    "mssql.autoDisableNonTSqlLanguageService": false,
     "mssql.enableRichExperiences": true,
     "mssql.connections": [],
     "mssql.connectionGroups": [
@@ -244,8 +256,6 @@
         }
     ],
     "docker.extension.enableComposeLanguageServer": false,
-    "remote.SSH.remotePlatform": {
-    },
     "roo-cline.allowedCommands": [
         "npm test",
         "npm install",
@@ -254,7 +264,6 @@
         "git diff",
         "git show"
     ],
-    "mssql.autoDisableNonTSqlLanguageService": false,
     // Settings Sync
     "settingsSync.ignoredSettings": [
         "remote.SSH.remotePlatform",
