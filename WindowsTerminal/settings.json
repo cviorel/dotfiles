@@ -14,6 +14,14 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "down"
+            },
+            "id": "User.splitPane.D5151347"
+        },
+        {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -23,22 +31,14 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
-            },
-            "id": "User.splitPane.D5151347"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         },
         {
             "command": "paste",
@@ -61,12 +61,12 @@
             "keys": "ctrl+shift+c"
         },
         {
-            "id": "User.splitPane.D5151347",
-            "keys": "ctrl+shift+o"
-        },
-        {
             "id": "User.paste",
             "keys": "ctrl+shift+v"
+        },
+        {
+            "id": "User.splitPane.D5151347",
+            "keys": "ctrl+shift+o"
         },
         {
             "id": "User.find",
@@ -77,7 +77,6 @@
             "keys": "alt+shift+d"
         }
     ],
-    "multiLinePasteWarning": false,
     "newTabMenu": 
     [
         {
@@ -125,52 +124,22 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "Ubuntu (Canonical)",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
-            },
-            {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": true,
-                "name": "Ubuntu (WSL)",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
-                "hidden": false,
-                "name": "Kali Linux",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
             },
             {
-                "guid": "{b67acf40-56d7-5728-a4d6-d3b55f2990b9}",
+                "guid": "{2629e399-f695-5f1d-8271-4e15a94259d0}",
                 "hidden": false,
-                "name": "Developer Command Prompt for VS 2022 [Preview]",
-                "source": "Windows.Terminal.VisualStudio"
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
             },
             {
-                "guid": "{a92f2b91-092a-52c9-8d16-da9ef995b646}",
+                "guid": "{4e717908-790c-5577-a54b-f515360b2643}",
                 "hidden": false,
-                "name": "Developer PowerShell for VS 2022 [Preview]",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{38f4c550-4d64-5436-b800-c702ac90af6d}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{a2df8426-6cd5-59e0-a3d2-6203cd6124b0}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
+                "name": "kali-linux",
+                "source": "Microsoft.WSL"
             }
         ]
     },
@@ -249,5 +218,6 @@
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
     "themes": [],
+    "warning.multiLinePaste": false,
     "wordDelimiters": " ()\"';<>!@$^*|+=[]{}"
 }
