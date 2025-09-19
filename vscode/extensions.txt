@@ -23,6 +23,7 @@ hashicorp.terraform
 joytrekker.1mm-themes
 mechatroner.rainbow-csv
 mikestead.dotenv
+ms-azure-devops.azure-pipelines
 ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-containers
 ms-mssql.data-workspace-vscode
@@ -48,6 +49,7 @@ ms-vscode.copilot-mermaid-diagram
 ms-vscode.powershell
 ms-vscode.remote-explorer
 ms-vscode.remote-server
+nhoizey.gremlins
 redhat.vscode-commons
 redhat.vscode-yaml
 rooveterinaryinc.roo-cline

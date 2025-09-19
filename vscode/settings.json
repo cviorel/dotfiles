@@ -131,12 +131,10 @@
             "source.formatAll.terraform": "explicit"
         },
     },
-    "[yaml]": {
-        "editor.autoIndent": "advanced",
-        "editor.defaultFormatter": "redhat.vscode-yaml",
-        "editor.tabSize": 2
+    "[azure-pipelines]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[yml]": {
+    "[yaml]": {
         "editor.autoIndent": "advanced",
         "editor.defaultFormatter": "redhat.vscode-yaml",
         "editor.tabSize": 2

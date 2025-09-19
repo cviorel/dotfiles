@@ -14,14 +14,6 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "down"
-            },
-            "id": "User.splitPane.D5151347"
-        },
-        {
-            "command": 
-            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -31,14 +23,22 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
+                "split": "down"
             },
-            "id": "User.splitPane.A6751878"
+            "id": "User.splitPane.D5151347"
         },
         {
             "command": "find",
             "id": "User.find"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
         },
         {
             "command": "paste",
@@ -61,12 +61,12 @@
             "keys": "ctrl+shift+c"
         },
         {
-            "id": "User.paste",
-            "keys": "ctrl+shift+v"
-        },
-        {
             "id": "User.splitPane.D5151347",
             "keys": "ctrl+shift+o"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+shift+v"
         },
         {
             "id": "User.find",
@@ -140,6 +140,18 @@
                 "hidden": false,
                 "name": "kali-linux",
                 "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{f282123c-e682-5d50-a9f5-2d6860b56bce}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{66791736-ce49-55a3-a456-b75221139dd6}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
