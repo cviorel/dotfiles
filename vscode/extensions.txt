@@ -8,7 +8,6 @@ bierner.markdown-footnotes
 bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
-blackmist.linkcheckmd
 chrmarti.regex
 dbatools.search
 docker.docker

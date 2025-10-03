@@ -112,6 +112,8 @@
     "[markdown]": {
         "editor.formatOnSave": true,
         "editor.wordWrap": "on",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off",
         "files.trimTrailingWhitespace": false
@@ -267,5 +269,20 @@
     "settingsSync.ignoredSettings": [
         "remote.SSH.remotePlatform",
         "mssql.connectionGroups"
-    ]
+    ],
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "explorer.confirmDelete": false
 }
