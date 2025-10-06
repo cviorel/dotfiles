@@ -1,0 +1,289 @@
+// https://code.visualstudio.com/docs/getstarted/settings#_default-settings
+// https://dev.to/selrond/tips-to-use-vscode-more-efficiently-3h6p
+// https://gist.github.com/rkeithhill/60eaccf1676cf08dfb6f
+{
+    // Editor
+    "editor.formatOnPaste": true,
+    "editor.fontFamily": "'AurulentSansM Nerd Font Mono', 'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.renderControlCharacters": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": false,
+    "editor.renderWhitespace": "all",
+    "editor.autoIndent": "full",
+    "editor.detectIndentation": true,
+    "editor.guides.indentation": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.matchBrackets": "always",
+    "editor.guides.bracketPairs": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.maxColumn": 200,
+    "editor.minimap.showSlider": "always",
+    "editor.roundedSelection": false,
+    "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.stickyScroll.enabled": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.inlayHints.enabled": "on",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.rulers": [
+        80,
+        115
+    ],
+    // Explorer
+    "explorer.openEditors.visible": 1,
+    "explorer.sortOrder": "type",
+    // Files
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 30000,
+    "files.defaultLanguage": "powershell",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "breadcrumbs.enabled": true,
+    "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+    "workbench.settings.enableNaturalLanguageSearch": false, // Don't send keystrokes to Bing
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "1mm - OneDark Pro",
+    "workbench.iconTheme": "vscode-icons",
+    "window.newWindowDimensions": "inherit",
+    // disable all telemetry
+    "telemetry.telemetryLevel": "off",
+    // Extensions
+    "extensions.ignoreRecommendations": true,
+    // Powershell
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.ignoreOneLineBlock": false,
+    "powershell.codeFormatting.newLineAfterCloseBrace": true,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": true,
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.integratedConsole.suppressStartupBanner": false,
+    "powershell.integratedConsole.startInBackground": true,
+    "[powershell]": {
+        "editor.renderWhitespace": "all",
+        "editor.renderControlCharacters": true,
+        "files.trimTrailingWhitespace": true,
+        "files.encoding": "utf8bom",
+        "files.autoGuessEncoding": true,
+        "editor.tabCompletion": "on",
+        "editor.defaultFormatter": "ms-vscode.powershell",
+        // now your double clicks on a variable names include the dollar sign '$'
+        // https://twitter.com/TylerLeonhardt/status/1102749805233737729
+        "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?"
+    },
+    "[plaintext]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    },
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.wordWrap": "on",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.renderWhitespace": "all",
+        "editor.acceptSuggestionOnEnter": "off",
+        "files.trimTrailingWhitespace": false
+    },
+    "terraform.languageServer.terraform.path": "D:/Tools/terraform.exe",
+    "terraform.languageServer.ignoreSingleFileWarning": false,
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform",
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": "explicit"
+        },
+    },
+    "[terraform-vars]": {
+        "editor.defaultFormatter": "hashicorp.terraform",
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.formatAll.terraform": "explicit"
+        },
+    },
+    "[azure-pipelines]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.tabSize": 2
+    },
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": []
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "PowerShell -NoProfile": {
+            "source": "PowerShell",
+            "args": [
+                "-NoProfile"
+            ]
+        },
+        "Ubuntu (WSL)": {
+            "path": "C:\\WINDOWS\\System32\\wsl.exe",
+            "args": [
+                "-d",
+                "Ubuntu"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.fontFamily": "'AurulentSansM Nerd Font Mono', Consolas, monospace",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.scrollback": 1000,
+    "terminal.explorerKind": "external",
+    "terminal.integrated.env.windows": {},
+    "terminal.integrated.enableVisualBell": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetchPeriod": 300,
+    "git.autofetch": true,
+    "git.blame.editorDecoration.enabled": true,
+    "git.decorations.enabled": true,
+    "git.blame.statusBarItem.enabled": true,
+    "explorer.compactFolders": false,
+    "shellformat.effectLanguages": [
+        "shellscript",
+        "dockerfile",
+        "dotenv",
+        "hosts",
+        "jvmoptions",
+        "ignore",
+        "gitignore",
+        "properties",
+        "spring-boot-properties",
+        "azcli"
+    ],
+    "vsicons.dontShowNewVersionMessage": true,
+    // CodeSnap
+    "codesnap.backgroundColor": "#abb8c3",
+    "codesnap.boxShadow": "rgba(0, 0, 0, 0.55) 0px 20px 68px",
+    "codesnap.containerPadding": "1.8em",
+    "codesnap.roundedCorners": true,
+    "codesnap.showWindowControls": false,
+    "codesnap.showWindowTitle": false,
+    "codesnap.showLineNumbers": true,
+    "codesnap.realLineNumbers": false,
+    "codesnap.transparentBackground": true,
+    "codesnap.target": "container",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\Programs\\Python\\Python312\\python.exe",
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[sql]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.defaultFormatter": "ms-mssql.mssql",
+    },
+    "redhat.telemetry.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "yaml.schemas": {
+        "file://${env:USERPROFILE}/.vscode/extensions/docsmsft.docs-yaml-1.0.4/dist/toc.schema.json": "/toc\\.yml/i"
+    },
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "docker.docker"
+    },
+    "debug.inlineValues": "on",
+    "mssql.autoDisableNonTSqlLanguageService": false,
+    "mssql.enableRichExperiences": true,
+    "mssql.connections": [],
+    "mssql.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "9BAADE12-B337-4FC2-AC8B-D84BC9FB706B"
+        }
+    ],
+    "docker.extension.enableComposeLanguageServer": false,
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    // Settings Sync
+    "settingsSync.ignoredSettings": [
+        "remote.SSH.remotePlatform",
+        "mssql.connectionGroups"
+    ],
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "explorer.confirmDelete": false
+}

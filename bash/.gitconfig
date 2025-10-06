@@ -1,0 +1,82 @@
+[user]
+    name = Viorel Ciucu
+    email = viorel.ciucu@gmail.com
+
+[core]
+    pager = $PAGER
+    editor = $EDITOR
+    autocrlf = false
+    quotepath = false
+    preloadindex = true
+    fscache = true
+
+[color]
+    ui = auto
+
+[push]
+    default = current
+
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+    summary = true
+
+[mergetool]
+    prompt = false
+
+[alias]
+    alias = "!git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort"
+    authors = "!git log --format='%aN <%aE>' | sort -u"
+    rclone = clone --recursive
+    sclone = clone --recursive --depth 5
+    unshallow = fetch --unshallow
+    ss = stash save
+    sp = stash pop
+    st = status -s
+    sw = switch
+    ls = ls-files
+    lsc = ls-files --unmerged
+    lprune = "!git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
+    unmerged = branch --no-merged
+    stat = status
+    rawci = commit
+    ci = commit -v
+    cimob = "!git commit -v --template=$(for i in $(git rev-parse --show-toplevel)/git-co-authors.txt ${HOME}/git-co-authors.txt; do [ -f $i ] && echo $i && break; done)"
+    eci = commit --allow-empty
+    reci = commit --amend
+    readdci = commit --amend --no-edit -a
+    res = restore
+    br = branch
+    brs = branch --sort=authordate
+    tags = tag --sort=taggerdate
+    prebr = checkout -
+    unstage = reset
+    co = checkout
+    di = diff
+    dic = diff --cached
+    die = diff --exit-code
+    wdi = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
+    fp = push --force-with-lease
+    pf = "!git pull --ff --no-rebase origin $(git symbolic-ref --short HEAD)"
+    up = pull --rebase --autostash
+    premerge = merge --no-commit --no-ff
+    onemerge = merge --squash
+    rollback = reset --soft HEAD^
+    sq = "!point=${1:-HEAD} sh -c 'files=`git diff --name-only ${point}`; git reset ${point}; git add $files; git commit -a'; git rept"
+    rept = "!sh -c 'git tag -d pt; git tag pt'"
+    out = log origin..HEAD
+    rmv = remote -v
+    iftag = "!git tag --points-at `git rev-parse HEAD`"
+    su = submodule update --recursive
+    sui = submodule update --init --recursive
+    subfetch = submodule foreach "git checkout master; git pull"
+    fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+    pull-dry-run = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+    l =  log --pretty=format:\"%h %ad (%an): %s\" --date=short -20
+    lg = log --graph --pretty=format:'%C(red)%h%C(yellow)%d %C(reset)%s %C(green)(%cr) %C(blue bold)<%an>'
+    slog = log --pretty=format:\"%h %ad (%an): %s\" --date=short -20
+    mlog = log --oneline --abbrev-commit --merge
+    glog = log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate
+    dlog = log -p
+    logst = log --name-status
