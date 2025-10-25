@@ -119,7 +119,7 @@
         "files.trimTrailingWhitespace": false
     },
     "terraform.languageServer.terraform.path": "D:/Tools/terraform.exe",
-    "terraform.languageServer.ignoreSingleFileWarning": false,
+    "terraform.languageServer.ignoreSingleFileWarning": true,
     "[terraform]": {
         "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": false,
