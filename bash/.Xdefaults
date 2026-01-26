@@ -1,0 +1,88 @@
+! ----------------------------------------------------------------------
+! file:     ~/.Xdefaults
+! author:   cviorel
+! modified: feb 24, 2010
+! ----------------------------------------------------------------------
+
+! Xft settings ----------------------------------------------------------------
+Xft.antialias:  true
+Xft.dpi:        96
+Xft.hinting:    true
+! hintslight | hintsmedium | hintsfull
+Xft.hintstyle:  hintslight
+! rgba subpixel hinting (for LCDs)
+Xft.rgba:       rgb
+
+! URxvt -----------------------------------------------------------------------
+URxvt.background:   black
+URxvt.foreground:   white
+URxvt.colorBD:      Yellow
+URxvt.colorUL:      White
+URxvt.color0:       #000000
+URxvt.color1:       #CC0000
+URxvt.color2:       #4E9A06
+URxvt.color3:       #C4A000
+URxvt.color4:       #3465A4
+URxvt.color5:       #75507B
+URxvt.color6:       #34E2E2
+URxvt.color7:       #D3D7CF
+URxvt.color8:       #555753
+URxvt.color9:       #EF2929
+URxvt.color10:      #8AE234
+URxvt.color11:      #FCE94F
+URxvt.color12:      #729FCF
+URxvt.color13:      #AD7FA8
+URxvt.color14:      #34E2E2
+URxvt.color15:      #EEEEEC
+URxvt*transparent:  False
+!set the TERM environment variable
+URxvt*termName:     rxvt-unicode
+!delimiters for double-click mouse selection
+URxvt*cutchars:     '"'&()urxvt*,;<=>?@[]{|}$
+!! BEGIN urlLauncher settings !!
+URxvt*perl-lib:     /usr/lib/URxvt/perl/
+URxvt*perl-ext-common:  default,matcher
+URxvt*urlLauncher:  /usr/bin/firefox
+URxvt*matcher.button:   1
+!! END urlLauncher settings !!
+! run "fc-list" for a list of available fonts
+URxvt*font:         xft:Terminus:style=Regular:pixelsize=12::antialias=false
+URxvt*boldFont:     xft:Terminus:style=Bold:pixelsize=12::antialias=false
+URxvt*scrollBar:    False
+URxvt*saveLines:    2000
+! window geometry set
+URxvt.geometry:     140x50
+URxvt.title:        Rxvt - [ ThinkPad ]
+! Set a nice taskbar icon
+URxvt*iconFile:     /usr/share/icons/gnome/32x32/apps/gnome-terminal.png
+
+! XTerm -----------------------------------------------------------------------
+XTerm*geometry:         140x50
+XTerm*scrollBar:        false
+XTerm*dynamicColors:    true
+XTerm*saveLines:        2000
+XTerm*eightBitInput:    false
+XTerm*iconName:         XTerm
+! Enables True-Type rendering
+XTerm*renderFont:       true
+XTerm*faceName:         Terminus
+XTerm*faceSize:         9
+XTerm*foreground:       #ffffff
+XTerm*background:       black
+! Tango Color Scheme
+XTerm*color0:     #2e3436
+XTerm*color1:     #cc0000
+XTerm*color2:     #4e9a06
+XTerm*color3:     #c4a000
+XTerm*color4:     #3465a4
+XTerm*color5:     #75507b
+XTerm*color6:     #0b939b
+XTerm*color7:     #d3d7cf
+XTerm*color8:     #555753
+XTerm*color9:     #ef2929
+XTerm*color10:    #8ae234
+XTerm*color11:    #fce94f
+XTerm*color12:    #729fcf
+XTerm*color13:    #ad7fa8
+XTerm*color14:    #00f5e9
+XTerm*color15:    #eeeeec
