@@ -125,14 +125,14 @@
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
             "source.formatAll.terraform": "explicit"
-        },
+        }
     },
     "[terraform-vars]": {
         "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
             "source.formatAll.terraform": "explicit"
-        },
+        }
     },
     "[azure-pipelines]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -234,7 +234,7 @@
         "editor.formatOnSave": false,
         "editor.formatOnPaste": false,
         "editor.formatOnType": false,
-        "editor.defaultFormatter": "ms-mssql.mssql",
+        "editor.defaultFormatter": "ms-mssql.mssql"
     },
     "redhat.telemetry.enabled": false,
     "editor.inlineSuggest.enabled": true,
