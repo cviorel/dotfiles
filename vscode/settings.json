@@ -220,7 +220,7 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\Programs\\Python\\Python312\\python.exe",
+    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\Programs\\Python\\Python314\\python.exe",
     "[json][jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
@@ -291,6 +291,5 @@
         "git diff",
         "git show",
         "pwsh"
-    ],
-
+    ]
 }

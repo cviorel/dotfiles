@@ -14,7 +14,6 @@ docker.docker
 dotjoshjohnson.xml
 esbenp.prettier-vscode
 foxundermoon.shell-format
-github.copilot
 github.copilot-chat
 gruntfuggly.todo-tree
 hashicorp.hcl
@@ -44,11 +43,11 @@ ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
-ms-vscode.copilot-mermaid-diagram
 ms-vscode.powershell
 ms-vscode.remote-explorer
 ms-vscode.remote-server
 nhoizey.gremlins
+openai.chatgpt
 redhat.vscode-commons
 redhat.vscode-yaml
 rooveterinaryinc.roo-cline
