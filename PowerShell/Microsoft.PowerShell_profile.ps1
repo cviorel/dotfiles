@@ -546,10 +546,16 @@ $PSReadLineOptions = @{
     BellStyle                     = "None"
 }
 
-# PowerShell 7+ specific features
+# PowerShell 7+ specific features - only in interactive sessions with VT support
 if ($PSVersion.Major -ge 7) {
-    $PSReadLineOptions.PredictionSource = "History"
-    $PSReadLineOptions.PredictionViewStyle = "InlineView" # Available in PowerShell 7+
+    # Check if host supports VT and is interactive
+    $supportsVT = $Host.UI.SupportsVirtualTerminal -or $env:WT_SESSION
+    $isInteractive = [Environment]::UserInteractive -and (-not [Console]::IsOutputRedirected)
+
+    if ($supportsVT -and $isInteractive) {
+        $PSReadLineOptions.PredictionSource = "History"
+        $PSReadLineOptions.PredictionViewStyle = "InlineView" # Available in PowerShell 7+
+    }
 }
 
 Set-PSReadLineOption @PSReadLineOptions
