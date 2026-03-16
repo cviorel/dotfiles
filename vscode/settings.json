@@ -149,6 +149,14 @@
             "icon": "terminal-powershell",
             "args": []
         },
+        "Windows PowerShell": {
+            "path": [
+                "${env:windir}\\Sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "${env:windir}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+            ],
+            "args": [],
+            "icon": "terminal-powershell"
+        },
         "Command Prompt": {
             "path": [
                 "${env:windir}\\Sysnative\\cmd.exe",
@@ -254,7 +262,7 @@
     "mssql.connectionGroups": [
         {
             "name": "ROOT",
-            "id": "9BAADE12-B337-4FC2-AC8B-D84BC9FB706B"
+            "id": "ROOT"
         }
     ],
     "docker.extension.enableComposeLanguageServer": false,
