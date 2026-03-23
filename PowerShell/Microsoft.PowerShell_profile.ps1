@@ -39,7 +39,10 @@ function Set-Editor {
 
 $editor = Set-Editor
 
-function Clear-History {
+function Clear-HistoryFile {
+    # Clear PSReadLine's in-memory history buffer
+    [Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
+
     $historyPath = (Get-PSReadLineOption).HistorySavePath
     if (Test-Path -Path $historyPath) {
         Remove-Item -Path $historyPath -Force -ErrorAction SilentlyContinue

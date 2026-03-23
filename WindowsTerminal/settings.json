@@ -164,6 +164,18 @@
                 "hidden": false,
                 "name": "kali-linux",
                 "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{fc470240-507f-5bf2-a53d-3121950dddd4}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{88b62d82-efe1-5298-82c2-69d712e3b477}",
+                "hidden": false,
+                "name": "kali-linux",
+                "source": "Microsoft.WSL"
             }
         ]
     },
@@ -242,6 +254,6 @@
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
     "themes": [],
-    "warning.multiLinePaste": false,
+    "warning.multiLinePaste": "never",
     "wordDelimiters": " ()\"';<>!@$^*|+=[]{}"
 }

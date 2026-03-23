@@ -298,6 +298,11 @@
         "git log",
         "git diff",
         "git show",
-        "pwsh"
+        "pwsh",
+        "docker",
+        "npm run",
+        "docker exec",
+        "docker ps",
+        "docker compose logs"
     ]
 }
