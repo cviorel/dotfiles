@@ -60,11 +60,55 @@ function Get-VSCodePath {
     return 'code'
 }
 
+# Determine current platform
+$platform = if ($IsWindows -or $PSVersionTable.PSVersion.Major -le 5) {
+    'windows'
+} elseif ($IsLinux) {
+    'linux'
+} elseif ($IsMacOS) {
+    'macos'
+} else {
+    'windows'  # Default fallback
+}
+
+Write-Log "Detected platform: $platform"
+
 # Process each file in the configuration
 foreach ($file in $config.files.PSObject.Properties) {
+    # Check if this file is platform-specific
+    if ($file.Value.platforms -and $file.Value.platforms -notcontains $platform) {
+        Write-Log "Skipping $($file.Name) (not available on $platform)" -Level "INFO"
+        continue
+    }
+
     $sourcePath = Join-Path $GitRepo $file.Value.destination
-    $destinationPath = [System.Environment]::ExpandEnvironmentVariables($file.Value.source)
-    $binaryName = $file.Value.binaryName
+
+    # Get platform-specific destination path
+    $destinationPathTemplate = if ($file.Value.source -is [string]) {
+        $file.Value.source
+    } elseif ($file.Value.source.$platform) {
+        $file.Value.source.$platform
+    } else {
+        Write-Log "No source path defined for $($file.Name) on $platform" -Level "WARNING"
+        continue
+    }
+
+    # Expand environment variables and tilde
+    $destinationPath = [System.Environment]::ExpandEnvironmentVariables($destinationPathTemplate)
+    if ($destinationPath -match '^~') {
+        $homePath = [System.Environment]::GetFolderPath('UserProfile')
+        $destinationPath = $destinationPath -replace '^~', $homePath
+    }
+
+    # Get platform-specific binary name
+    $binaryName = if ($file.Value.binaryName -is [string]) {
+        $file.Value.binaryName
+    } elseif ($file.Value.binaryName.$platform) {
+        $file.Value.binaryName.$platform
+    } else {
+        Write-Log "No binary name defined for $($file.Name) on $platform" -Level "WARNING"
+        continue
+    }
 
     Write-Log "Processing $($file.Name)..."
     if (Test-Command -CommandName $binaryName) {

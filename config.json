@@ -1,24 +1,50 @@
 {
     "files": {
         "PowerShell": {
-            "source": "%USERPROFILE%\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1",
-            "destination": "PowerShell\\Microsoft.PowerShell_profile.ps1",
-            "binaryName": "pwsh.exe"
+            "source": {
+                "windows": "%USERPROFILE%\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1",
+                "linux": "~/.config/powershell/Microsoft.PowerShell_profile.ps1",
+                "macos": "~/.config/powershell/Microsoft.PowerShell_profile.ps1"
+            },
+            "destination": "PowerShell/Microsoft.PowerShell_profile.ps1",
+            "binaryName": {
+                "windows": "pwsh.exe",
+                "linux": "pwsh",
+                "macos": "pwsh"
+            }
         },
         "WindowsPowerShell": {
-            "source": "%USERPROFILE%\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1",
-            "destination": "WindowsPowerShell\\Microsoft.PowerShell_profile.ps1",
-            "binaryName": "powershell.exe"
+            "source": {
+                "windows": "%USERPROFILE%\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1"
+            },
+            "destination": "WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+            "binaryName": {
+                "windows": "powershell.exe"
+            },
+            "platforms": ["windows"]
         },
         "VSCode": {
-            "source": "%APPDATA%\\Code\\User\\settings.json",
-            "destination": "VSCode\\settings.json",
-            "binaryName": "code.cmd"
+            "source": {
+                "windows": "%APPDATA%\\Code\\User\\settings.json",
+                "linux": "~/.config/Code/User/settings.json",
+                "macos": "~/Library/Application Support/Code/User/settings.json"
+            },
+            "destination": "vscode/settings.json",
+            "binaryName": {
+                "windows": "code.cmd",
+                "linux": "code",
+                "macos": "code"
+            }
         },
         "WindowsTerminal": {
-            "source": "%LOCALAPPDATA%\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json",
-            "destination": "WindowsTerminal\\settings.json",
-            "binaryName": "wt.exe"
+            "source": {
+                "windows": "%LOCALAPPDATA%\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\settings.json"
+            },
+            "destination": "WindowsTerminal/settings.json",
+            "binaryName": {
+                "windows": "wt.exe"
+            },
+            "platforms": ["windows"]
         }
     }
 }

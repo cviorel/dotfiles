@@ -257,7 +257,6 @@
     },
     "debug.inlineValues": "on",
     "mssql.autoDisableNonTSqlLanguageService": false,
-    "mssql.enableRichExperiences": true,
     "mssql.connections": [],
     "mssql.connectionGroups": [
         {
@@ -288,13 +287,11 @@
     "explorer.confirmDelete": false,
     "github.copilot.nextEditSuggestions.enabled": true,
     "chat.useAgentSkills": true,
-    // Roo Code
-    "roo-cline.debug": false,
-    "roo-cline.deniedCommands": [],
-    "roo-cline.allowedCommands": [
+    // Zoo Code
+    "zoo-code.debug": false,
+    "zoo-code.allowedCommands": [
         "npm test",
         "npm install",
-        "tsc",
         "git log",
         "git diff",
         "git show",
@@ -304,5 +301,6 @@
         "docker exec",
         "docker ps",
         "docker compose logs"
-    ]
+    ],
+    "zoo-code.deniedCommands": []
 }
