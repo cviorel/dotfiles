@@ -40,6 +40,26 @@ function Test-Command {
     }
 }
 
+# Function to get the VS Code CLI path in a cross-platform way
+function Get-VSCodePath {
+    # Try to find 'code' in PATH first (works on all platforms)
+    $codeCommand = Get-Command 'code' -ErrorAction SilentlyContinue
+    if ($codeCommand) {
+        return $codeCommand.Source
+    }
+
+    # Fallback to Windows-specific path if 'code' is not in PATH
+    if ($IsWindows -or $PSVersionTable.PSVersion.Major -le 5) {
+        $windowsPath = "$env:LOCALAPPDATA\Programs\Microsoft VS Code\bin\code.cmd"
+        if (Test-Path $windowsPath) {
+            return $windowsPath
+        }
+    }
+
+    # If nothing found, return 'code' and let it fail with a clear error
+    return 'code'
+}
+
 # Process each file in the configuration
 foreach ($file in $config.files.PSObject.Properties) {
     $sourcePath = Join-Path $GitRepo $file.Value.destination
@@ -92,16 +112,32 @@ foreach ($file in $config.files.PSObject.Properties) {
                 $extensionsPath = Join-Path (Split-Path $sourcePath -Parent) "extensions.txt"
                 if (Test-Path $extensionsPath) {
                     $extensionsToInstall = Get-Content $extensionsPath
-                    $installedExtensions = code --list-extensions
+                    $vsCodePath = Get-VSCodePath
+                    $installedExtensions = & $vsCodePath --list-extensions 2>$null
 
                     foreach ($extension in $extensionsToInstall) {
-                        if ($installedExtensions -notcontains $extension) {
+                        # Trim whitespace and skip empty lines
+                        $extension = $extension.Trim()
+                        if ([string]::IsNullOrWhiteSpace($extension)) {
+                            continue
+                        }
+
+                        # Check if extension is already installed (case-insensitive comparison)
+                        $isInstalled = $installedExtensions | Where-Object { $_.Trim() -eq $extension }
+
+                        if (-not $isInstalled) {
                             if ($DryRun) {
                                 Write-Log "Would install VSCode extension: $extension"
                             }
                             else {
-                                code --install-extension $extension --force
-                                Write-Log "Installed VSCode extension: $extension"
+                                $installOutput = & $vsCodePath --install-extension $extension --force 2>&1
+                                # Only log as installed if it wasn't already installed
+                                if ($installOutput -notmatch "is already installed") {
+                                    Write-Log "Installed VSCode extension: $extension"
+                                }
+                                else {
+                                    Write-Log "VSCode extension already installed: $extension"
+                                }
                             }
                         }
                         else {

@@ -108,29 +108,25 @@ function ConvertTo-Base64String {
 }
 
 function Get-Tail {
-    <#
-    .SYNOPSIS
-    Equivalent of NIX tail -f
-
-    .DESCRIPTION
-    Will monitor any kind of text readable log and show changes in real time
-
-    .EXAMPLE
-    Get-Tail c:\somelog.log
-    #>
-    [CmdletBinding()]Param(
-        [String]$FilePath
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateScript({
+                if (-not (Test-Path $_)) {
+                    throw "File '$_' does not exist"
+                }
+                if (-not (Test-Path $_ -PathType Leaf)) {
+                    throw "'$_' is not a file"
+                }
+                return $true
+            })]
+        [string]$FilePath
     )
 
-    if (![string]::IsNullOrEmpty($FilePath)) {
-        Get-Content -Path "$FilePath" -Wait
-    }
-    else {
-        'You did not select a file.'
-    }
+    Get-Content -Path $FilePath -Wait
 }
 
-function Generate-Password {
+function New-Password {
     <#
     .SYNOPSIS
     Generates a password that meets the AD complexity requirements.
@@ -150,12 +146,12 @@ function Generate-Password {
     Exclude specific characters that might e.g. lead to confusion like an alphanumeric O and a numeric 0 (zero).
 
     .EXAMPLE
-    PS> Generate-Password -Size 12 -CharSets ULNS -Exclude "OLIoli01"
+    PS> New-Password -Size 12 -CharSets ULNS -Exclude "OLIoli01"
 
     This would generate a 12 characters long password that does not contain the characters OLIoli01
 
     .EXAMPLE
-    PS> 1..10 | ForEach-Object { Generate-Password -Size 25 -CharSets ULNS }
+    PS> 1..10 | ForEach-Object { New-Password -Size 25 -CharSets ULNS }
 
     This would generate 10 password srtrings with a length of 25 chars
     #>
@@ -177,7 +173,7 @@ function Generate-Password {
         $Chars = @()
         $output = @()
         If (!$TokenSets) {
-            $Global:TokenSets = @{
+            $script:TokenSets = @{
                 U = [Char[]]'ABCDEFGHIJKLMNOPQRSTUVWXYZ'           # Upper case
                 L = [Char[]]'abcdefghijklmnopqrstuvwxyz'           # Lower case
                 N = [Char[]]'0123456789'                           # Numerals
@@ -212,7 +208,43 @@ function Get-PrimaryMonitorSize {
 
 function Start-RDP {
     param (
+        [Parameter(Mandatory = $true, Position = 0, HelpMessage = "Enter the computer name or IP address to connect to")]
+        [ValidateNotNullOrEmpty()]
+        [ValidatePattern(
+            '^(?=.{1,253}$)(([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)$|^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$',
+            ErrorMessage = "'{0}' is not a valid hostname or IP address. Hostnames must contain only alphanumeric characters, hyphens, and dots, with a maximum of 253 characters total and each label up to 63 characters. IP addresses must be in valid IPv4 format."
+        )]
+        [ValidateScript(
+            {
+                try {
+                    # Try to resolve the hostname
+                    $resolveResult = [System.Net.Dns]::GetHostEntry($_)
+                    if ($null -eq $resolveResult) {
+                        throw "Unable to resolve hostname '$_'"
+                    }
+                    return $true
+                }
+                catch [System.Net.Sockets.SocketException] {
+                    # If DNS resolution fails, check if it's reachable via Test-Connection
+                    try {
+                        $pingResult = Test-Connection -ComputerName $_ -Count 1 -Quiet -ErrorAction Stop
+                        if ($pingResult) {
+                            return $true
+                        }
+                        throw "Computer '$_' is not reachable on the network"
+                    }
+                    catch {
+                        throw "Computer '$_' cannot be resolved or reached on the network. Verify the name is correct and the computer is online."
+                    }
+                }
+                catch {
+                    throw "Failed to validate computer name '$_': $($_.Exception.Message)"
+                }
+            },
+            ErrorMessage = "Computer name validation failed: {0}"
+        )]
         [string]$ComputerName,
+
         [switch]$NoFullScreen,
         [switch]$NoRemoteGuard
     )
@@ -227,8 +259,6 @@ function Start-RDP {
         if ($NoFullScreen.IsPresent) {
             [void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
             $res = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize | Select-Object Width, Height
-            #$Width = $res.Width - $res.Width * 15 / 100
-            #$Height = $res.Height - $res.Height * 15 / 100
             $Width = $res.Width
             $Height = $res.Height
 
@@ -258,6 +288,9 @@ function Start-RDP {
         Start-Process -NoNewWindow -FilePath $mstsc -ArgumentList $mstscParam.Trim()
     }
     catch {
+        Write-Error "Failed to start RDP session to ${ComputerName}: $_"
+        Write-Verbose "Error details: $($_.Exception.Message)"
+        throw
     }
 }
 
@@ -301,6 +334,7 @@ function Invoke-StayAlive {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
+        [ValidateRange(1, 1440)] # Max 24 hours
         [int]$Minutes
     )
 
@@ -321,16 +355,46 @@ function Invoke-StayAlive {
     }
 }
 
-function Duck {
-    Start-Process "https://duckduckgo.com/?q=$args"
+function Search-DuckDuckGo {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Query
+    )
+
+    $searchTerm = $Query -join ' '
+    $encodedQuery = [System.Web.HttpUtility]::UrlEncode($searchTerm)
+    $url = "https://duckduckgo.com/?q=$encodedQuery"
+
+    Start-Process $url
 }
 
-function Google {
-    Start-Process "https://www.google.com/search?q=$args"
+function Search-Google {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Query
+    )
+
+    $searchTerm = $Query -join ' '
+    $encodedQuery = [System.Web.HttpUtility]::UrlEncode($searchTerm)
+    $url = "https://www.google.com/search?q=$encodedQuery"
+
+    Start-Process $url
 }
 
-function StackOverflow {
-    Start-Process "https://www.stackoverflow.com/search?q=$args"
+function Search-StackOverflow {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string[]]$Query
+    )
+
+    $searchTerm = $Query -join ' '
+    $encodedQuery = [System.Web.HttpUtility]::UrlEncode($searchTerm)
+    $url = "https://stackoverflow.com/search?q=$encodedQuery"
+
+    Start-Process $url
 }
 
 function Get-LoadedAssembly {
@@ -347,16 +411,29 @@ function Get-LoadedAssembly {
 }
 
 function Remove-CommitHistory {
-    [CmdletBinding()]
-    param (
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+    param ()
 
-    )
-
-    begin {
-
+    # Verify we're in a git repository
+    if (-not (Test-Path .git)) {
+        throw 'Not in a git repository'
     }
 
-    process {
+    # Check for uncommitted changes
+    $status = git status --porcelain
+    if ($status) {
+        throw 'You have uncommitted changes. Commit or stash them first.'
+    }
+
+    if ($PSCmdlet.ShouldProcess('Git repository', 'Delete all commit history')) {
+        Write-Warning 'This will delete ALL commit history. This cannot be undone!'
+        $confirmation = Read-Host "Type 'DELETE HISTORY' to confirm"
+
+        if ($confirmation -ne 'DELETE HISTORY') {
+            Write-Host 'Operation cancelled'
+            return
+        }
+
         # delete all your commit history but keep the code in its current state
 
         # Checkout
@@ -366,7 +443,7 @@ function Remove-CommitHistory {
         git add -A
 
         # Commit the changes
-        git commit -am "initial commit"
+        git commit -am 'initial commit'
 
         # Delete the main/master branch
         git branch -D main
@@ -380,10 +457,6 @@ function Remove-CommitHistory {
         # Add upstream (tracking) reference
         git push --set-upstream origin main
     }
-
-    end {
-
-    }
 }
 
 function Get-CommitMessage {
@@ -396,7 +469,7 @@ function Get-CommitMessage {
     }
 
     process {
-        $uri = 'http://whatthecommit.com/index.txt'
+        $uri = 'https://whatthecommit.com/index.txt'
         $randomCommitMessage = Invoke-RestMethod -Method Get -Uri $uri
         $randomCommitMessage.Trim()
     }
@@ -407,14 +480,44 @@ function Get-CommitMessage {
 }
 
 function Push-MyStuff {
-    [CmdletBinding()]
-    param (
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [string]$Message,
+        [switch]$UseRandomMessage
     )
 
-    $message = Get-CommitMessage
-    git add -A
-    git commit -a -m $message
-    git push
+    # Show what will be committed
+    Write-Host "`nFiles to be committed:" -ForegroundColor Yellow
+    git status --short
+
+    # Check for sensitive data patterns
+    $sensitivePatterns = @('password', 'api[_-]?key', 'secret', 'token', 'credential')
+    $files = git diff --cached --name-only
+    foreach ($file in $files) {
+        $content = git diff --cached $file
+        foreach ($pattern in $sensitivePatterns) {
+            if ($content -match $pattern) {
+                Write-Warning "Potential sensitive data detected in $file (pattern: $pattern)"
+                $continue = Read-Host 'Continue anyway? (y/N)'
+                if ($continue -ne 'y') {
+                    return
+                }
+            }
+        }
+    }
+
+    if (-not $Message -and -not $UseRandomMessage) {
+        $Message = Read-Host 'Commit message'
+    } elseif ($UseRandomMessage) {
+        $Message = Get-CommitMessage
+        Write-Host "Using random message: $Message" -ForegroundColor Cyan
+    }
+
+    if ($PSCmdlet.ShouldProcess('Git repository', 'Commit and push changes')) {
+        git add -A
+        git commit -m $Message
+        git push
+    }
 }
 
 function Install-Updates {
@@ -475,7 +578,7 @@ function RemoveDanglingImages {
     }
 }
 
-function CleanDocker {
+function Clear-DockerResources {
     # Check for CleanStoppedContainers function
     if (Get-Command -Name CleanStoppedContainers -ErrorAction SilentlyContinue) {
         try {

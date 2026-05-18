@@ -1,6 +1,7 @@
 adpyke.codesnap
 akamud.vscode-theme-onedark
 akamud.vscode-theme-onelight
+anthropic.claude-code
 bierner.github-markdown-preview
 bierner.markdown-checkbox
 bierner.markdown-emoji
@@ -24,6 +25,7 @@ mikestead.dotenv
 ms-azure-devops.azure-pipelines
 ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-containers
+ms-dotnettools.vscode-dotnet-runtime
 ms-mssql.data-workspace-vscode
 ms-mssql.mssql
 ms-mssql.sql-bindings-vscode
@@ -50,7 +52,6 @@ nhoizey.gremlins
 openai.chatgpt
 redhat.vscode-commons
 redhat.vscode-yaml
-rooveterinaryinc.roo-cline
 saoudrizwan.claude-dev
 sdras.night-owl
 sst-dev.opencode
@@ -61,3 +62,4 @@ tyriar.sort-lines
 vscode-icons-team.vscode-icons
 wayou.vscode-todo-highlight
 wmaurer.change-case
+zoocodeorganization.zoo-code

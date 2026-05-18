@@ -12,15 +12,21 @@ $config = Get-Content $ConfigPath | ConvertFrom-Json
 function Write-Log {
     param (
         [string]$Message,
-        [string]$Level = "INFO"
+        [ValidateSet('INFO', 'WARNING', 'ERROR')]
+        [string]$Level = 'INFO'
     )
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+
+    $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
     $logMessage = "[$timestamp] [$Level] $Message"
     Write-Host $logMessage
 
-    $tempPath = [System.IO.Path]::GetTempPath()
-    $logFilePath = Join-Path -Path $tempPath -ChildPath "dotfilesBackup.log"
-    Add-Content -Path $logFilePath -Value $logMessage
+    try {
+        $tempPath = [System.IO.Path]::GetTempPath()
+        $logFilePath = Join-Path -Path $tempPath -ChildPath 'dotfilesBackup.log'
+        Add-Content -Path $logFilePath -Value $logMessage -ErrorAction Stop
+    } catch {
+        Write-Warning "Failed to write to log file: $_"
+    }
 }
 
 # Function to check if a specific command is available
@@ -37,6 +43,26 @@ function Test-Command {
     catch {
         return $false
     }
+}
+
+# Function to get the VS Code CLI path in a cross-platform way
+function Get-VSCodePath {
+    # Try to find 'code' in PATH first (works on all platforms)
+    $codeCommand = Get-Command 'code' -ErrorAction SilentlyContinue
+    if ($codeCommand) {
+        return $codeCommand.Source
+    }
+
+    # Fallback to Windows-specific path if 'code' is not in PATH
+    if ($IsWindows -or $PSVersionTable.PSVersion.Major -le 5) {
+        $windowsPath = "$env:LOCALAPPDATA\Programs\Microsoft VS Code\bin\code.cmd"
+        if (Test-Path $windowsPath) {
+            return $windowsPath
+        }
+    }
+
+    # If nothing found, return 'code' and let it fail with a clear error
+    return 'code'
 }
 
 # Process each file in the configuration
@@ -81,7 +107,8 @@ foreach ($file in $config.files.PSObject.Properties) {
                     Write-Log "Would export VSCode extensions to: $extensionsPath"
                 }
                 else {
-                    code --list-extensions | Out-File -FilePath $extensionsPath -Force
+                    $vsCodePath = Get-VSCodePath
+                    & $vsCodePath --list-extensions | Out-File -FilePath $extensionsPath -Force
                     Write-Log "Exported VSCode extensions to: $extensionsPath"
                 }
 
