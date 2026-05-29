@@ -290,14 +290,15 @@
     // Zoo Code
     "zoo-code.debug": false,
     "zoo-code.allowedCommands": [
-        "npm test",
-        "npm install",
         "git log",
         "git diff",
         "git show",
-        "pwsh",
-        "docker",
         "npm run",
+        "npm test",
+        "npm install",
+        "pwsh",
+        "pwsh -Command",
+        "docker",
         "docker exec",
         "docker ps",
         "docker compose logs"

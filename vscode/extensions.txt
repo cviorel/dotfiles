@@ -6,17 +6,13 @@ bierner.github-markdown-preview
 bierner.markdown-checkbox
 bierner.markdown-emoji
 bierner.markdown-footnotes
-bierner.markdown-mermaid
 bierner.markdown-preview-github-styles
-bierner.markdown-yaml-preamble
 chrmarti.regex
 dbatools.search
 docker.docker
 dotjoshjohnson.xml
 esbenp.prettier-vscode
 foxundermoon.shell-format
-github.copilot-chat
-gruntfuggly.todo-tree
 hashicorp.hcl
 hashicorp.terraform
 joytrekker.1mm-themes
