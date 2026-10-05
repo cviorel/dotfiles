@@ -124,48 +124,6 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
-                "name": "Git Bash",
-                "source": "Git"
-            },
-            {
-                "guid": "{2629e399-f695-5f1d-8271-4e15a94259d0}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{4e717908-790c-5577-a54b-f515360b2643}",
-                "hidden": false,
-                "name": "kali-linux",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{f282123c-e682-5d50-a9f5-2d6860b56bce}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{66791736-ce49-55a3-a456-b75221139dd6}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{ba13141a-5b49-58d6-b516-2fb6350664a4}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{4ba3b43e-92c6-541c-ac4a-cfe145d7d827}",
-                "hidden": false,
-                "name": "kali-linux",
-                "source": "Microsoft.WSL"
-            },
-            {
                 "guid": "{fc470240-507f-5bf2-a53d-3121950dddd4}",
                 "hidden": false,
                 "name": "Ubuntu",

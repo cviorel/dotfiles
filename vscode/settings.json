@@ -292,16 +292,14 @@
     "zoo-code.allowedCommands": [
         "git log",
         "git diff",
-        "git show",
-        "npm run",
-        "npm test",
-        "npm install",
-        "pwsh",
-        "pwsh -Command",
-        "docker",
-        "docker exec",
-        "docker ps",
-        "docker compose logs"
+        "git show"
     ],
-    "zoo-code.deniedCommands": []
+    "zoo-code.deniedCommands": [],
+    "yaml.disableSchemaDetection": [
+        "azure-pipelines.yml",
+        "azure-pipelines.yaml"
+    ],
+    "claudeCode.preferredLocation": "panel",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "chat.viewSessions.orientation": "stacked"
 }

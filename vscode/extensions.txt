@@ -2,6 +2,7 @@ adpyke.codesnap
 akamud.vscode-theme-onedark
 akamud.vscode-theme-onelight
 anthropic.claude-code
+bedirt.gpt-token-counter-live
 bierner.github-markdown-preview
 bierner.markdown-checkbox
 bierner.markdown-emoji
@@ -46,6 +47,7 @@ ms-vscode.remote-explorer
 ms-vscode.remote-server
 nhoizey.gremlins
 openai.chatgpt
+openai.codex-audio
 redhat.vscode-commons
 redhat.vscode-yaml
 saoudrizwan.claude-dev
