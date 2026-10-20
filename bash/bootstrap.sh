@@ -2,9 +2,8 @@
 
 set -e
 
-cd ~
-
 DOTFILES_REPO="${HOME}/dotfiles"
+DOTFILES_SOURCE="${DOTFILES_REPO}/bash"
 GIT_CONTRIB_URL="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 
 # Check if wget or curl is available
@@ -26,16 +25,16 @@ elif command -v curl &>/dev/null; then
 fi
 
 # Create symlinks for dotfiles
-for dotfile in .?*; do
-    case "${dotfile}" in
+for dotfile in "${DOTFILES_SOURCE}"/.?*; do
+    case "${dotfile##*/}" in
     .. | .git | .gitmodules)
         # ignore
         continue
         ;;
     *)
         # symlink
-        ln -sfni "${PWD}/${dotfile}" "${HOME}"
-        echo "Created symlink for ${dotfile}"
+        ln -sfni "${dotfile}" "${HOME}"
+        echo "Created symlink for ${dotfile##*/}"
         ;;
     esac
 done
